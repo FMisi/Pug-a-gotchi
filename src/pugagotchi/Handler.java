@@ -81,7 +81,14 @@ public class Handler {
         Graphics2D g17 = (Graphics2D)g;
         Graphics2D g18 = (Graphics2D)g;
         Graphics2D g19 = (Graphics2D)g;
+        
         Graphics2D g20 = (Graphics2D)g;
+        Graphics2D g21 = (Graphics2D)g;
+        Graphics2D g22 = (Graphics2D)g;
+        Graphics2D g23 = (Graphics2D)g;
+        Graphics2D g24 = (Graphics2D)g;
+        Graphics2D g25 = (Graphics2D)g;
+        Graphics2D g26 = (Graphics2D)g;
         
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("Arial", 1, 12));
@@ -138,7 +145,23 @@ public class Handler {
         g18.setFont(new Font("Arial", 1, 12));
         g19.setColor(Color.BLACK);
         g19.setFont(new Font("Arial", 1, 12));
-        if(Keys.ablakbool==true){
+        
+        g20.setColor(Color.BLACK);
+        g20.setFont(new Font("Arial", 1, 12));
+        g21.setColor(Color.BLACK);
+        g21.setFont(new Font("Arial", 1, 12));
+        g22.setColor(Color.BLACK);
+        g22.setFont(new Font("Arial", 1, 12));
+        g23.setColor(Color.BLACK);
+        g23.setFont(new Font("Arial", 1, 12));
+        g24.setColor(Color.BLACK);
+        g24.setFont(new Font("Arial", 1, 12));
+        g25.setColor(Color.BLACK);
+        g25.setFont(new Font("Arial", 1, 12));
+        g26.setColor(Color.BLACK);
+        g26.setFont(new Font("Arial", 1, 12));
+        
+        if(Keys.isAblakbool()==true && Keys.isAblakbool2()==false){
             g13.drawString("Jutalomfalatka", 287, 54);
             g14.drawString("Száraz kutyatáp", 287, 124);
             g15.drawString("Csont", 287, 194);
@@ -147,6 +170,14 @@ public class Handler {
             g18.drawString("Konzerv kutyaeledel", 287, 404);
             g19.drawString("Kutya energiaital", 287, 474);
         }
-        
+        else if(Keys.isAblakbool()==false && Keys.isAblakbool2()==true){
+            g20.drawString("Sétáltatás", 287, 54);
+            g21.drawString("Labdás játék", 287, 124);
+            g22.drawString("Kutyaiskola", 287, 194);
+            g23.drawString("Játék a parkban", 287, 264);
+            g24.drawString("Újságkihordás", 287, 334);
+            g25.drawString("Rendőri segítség", 287, 404);
+            g26.drawString("Házőrzés", 287, 474);
+        }
     }
 }

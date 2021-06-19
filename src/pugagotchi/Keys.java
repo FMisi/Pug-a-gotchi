@@ -12,7 +12,8 @@ import java.awt.event.*;
 public class Keys implements KeyListener{
     
     private boolean[] keyDown = {false, false, false, false, false, false, false, false, false};
-    public static boolean ablakbool = false;
+    private static boolean ablakbool = false;
+    private static boolean ablakbool2 = false;
     
     /**
      * A keyPressed eljaras a lenyomott billentyuk KeyCode-jat vizsgalja,<br>
@@ -30,6 +31,9 @@ public class Keys implements KeyListener{
         if(arg1.getKeyCode() == KeyEvent.VK_E){
             keyPressedE();
         }
+        if(arg1.getKeyCode() == KeyEvent.VK_J){
+            keyPressedJ();
+        }
     }
     
     // keyPressed void-ok KEZDETE
@@ -39,13 +43,27 @@ public class Keys implements KeyListener{
     }
     
     private void keyPressedE(){
-        if(ablakbool==true){
-            ablakbool=false;
-        }
-        else if(ablakbool==false){
-            ablakbool=true;
+        if(ablakbool2==false){
+            if(ablakbool==true){
+                ablakbool=false;
+            }
+            else if(ablakbool==false){
+                ablakbool=true;
+            }
         }
         keyDown[1] = true;
+    }
+    
+    private void keyPressedJ(){
+        if(ablakbool==false){
+            if(ablakbool2==true){
+                ablakbool2=false;
+            }
+            else if(ablakbool2==false){
+                ablakbool2=true;
+            }
+        }
+        keyDown[2] = true;
     }
     // keyPressed void-ok VEGE
 
@@ -64,6 +82,9 @@ public class Keys implements KeyListener{
         if(arg1.getKeyCode() == KeyEvent.VK_E){
             keyDown[1] = false;
         }
+        if(arg1.getKeyCode() == KeyEvent.VK_J){
+            keyDown[2] = false;
+        }
     }
     
     /**
@@ -74,8 +95,14 @@ public class Keys implements KeyListener{
     @Override
     public void keyTyped(KeyEvent arg1) {}
     
-    /**
-     * A randomHordosHokamoka eljarasok a hordok tartalmanak<br>
-     * randomizalasaert felelosek
-     */
+    // Getterek
+
+    public static boolean isAblakbool() {
+        return ablakbool;
+    }
+
+    public static boolean isAblakbool2() {
+        return ablakbool2;
+    }
+    
 }
