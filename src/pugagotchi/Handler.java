@@ -8,9 +8,7 @@ import gameObjects.Player;
  * @author Felegyi Mihaly Patrik
  */
 public class Handler {
-    
-    // Milyen szinu a player es hol van (a szin nem fontos, csak debug-hoz volt jo):
-    public static Player playerOne = new Player(Color.WHITE, 19, 15);
+    public static Player playerOne = new Player();
     
     // szamlalok
     public static int korok = 90;
@@ -22,15 +20,16 @@ public class Handler {
     public static int rendetlenseg = 62;
     public static String kutyusneve = "Kutyus neve";
     public static String tulnev = "Tulnev";
+    public static int seged = 0;
     
     // inventory
-    public static int teruletbovites = 0;
-    public static int landzsa = 0;
-    public static int tuzhely = 0;
-    public static int viztisztito = 0;
-    public static int halo = 0;
-    public static int burgonya = 0;
-    public static int hal = 40;
+    public static int jutalomfalatka = 0;
+    public static int szarazkutyatap = 0;
+    public static int csont = 0;
+    public static int hazikoszt = 0;
+    public static int viz = 0;
+    public static int konzervkutyaeledel = 0;
+    public static int kutyaenergiaital = 40;
     
     public static boolean winbool = false;
     
@@ -39,7 +38,38 @@ public class Handler {
  az penz es jollakottsag szamlalokat
      */
     public static void tick(){
-        if(korok>=100){
+        if(jollakottsag<0){
+            jollakottsag=0;
+        }
+        else if(jollakottsag>100){
+            jollakottsag=100;
+        }
+        if(egeszseg<0){
+            egeszseg=0;
+        }
+        else if(egeszseg>100){
+            egeszseg=100;
+        }
+        if(kedv<0){
+            kedv=0;
+        }
+        else if(kedv>100){
+            kedv=100;
+        }
+        if(energia<0){
+            energia=0;
+        }
+        else if(energia>100){
+            energia=100;
+        }
+        if(rendetlenseg<0){
+            rendetlenseg=0;
+        }
+        else if(rendetlenseg>100){
+            rendetlenseg=100;
+        }
+        
+        if(korok>=100 || penz>=10000){
             Window.clip.stop();
             Window.clip2.start();
         }
@@ -90,19 +120,28 @@ public class Handler {
         Graphics2D g25 = (Graphics2D)g;
         Graphics2D g26 = (Graphics2D)g;
         
+        Graphics2D g27 = (Graphics2D)g;
+        Graphics2D g28 = (Graphics2D)g;
+        Graphics2D g29 = (Graphics2D)g;
+        Graphics2D g30 = (Graphics2D)g;
+        Graphics2D g31 = (Graphics2D)g;
+        Graphics2D g32 = (Graphics2D)g;
+        Graphics2D g33 = (Graphics2D)g;
+        
+        
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("Arial", 1, 12));
         g2.drawString("Körök: "+korok + "", 7, 14);
         g3.setColor(Color.MAGENTA);
         g3.setFont(new Font("Arial", 1, 18));
         
-        if(korok>=100){
+        if(korok>=100 || penz>=10000){
             korok=100;
-            winbool=true;
             penz=10000;
-            jollakottsag=100;
+            winbool=true;
             g3.drawString("FELNEVELTED PUG-A-GOTCHIDAT, MEGNYERTED A JÁTÉKOT!:D ", 121, 101);
         }
+        
         g4.setColor(Color.BLACK);
         g4.setFont(new Font("Arial", 1, 12));
         g4.drawString("Pénz: "+penz + "", 7, 34);
@@ -179,5 +218,28 @@ public class Handler {
             g25.drawString("Rendőri segítség", 287, 404);
             g26.drawString("Házőrzés", 287, 474);
         }
+        
+        g27.setColor(Color.BLACK);
+        g27.setFont(new Font("Arial", 1, 12));
+        g27.drawString("Jutalomfalatka:  "+jutalomfalatka + "", 7, 543);
+        g28.setColor(Color.BLACK);
+        g28.setFont(new Font("Arial", 1, 12));
+        g28.drawString("Száraz kutyatáp:  "+szarazkutyatap + "", 157, 543);
+        g29.setColor(Color.BLACK);
+        g29.setFont(new Font("Arial", 1, 12));
+        g29.drawString("Csont:  "+csont + "", 307, 543);
+        g30.setColor(Color.BLACK);
+        g30.setFont(new Font("Arial", 1, 12));
+        g30.drawString("Házikoszt:  "+hazikoszt + "", 457, 543);
+        g31.setColor(Color.BLACK);
+        g31.setFont(new Font("Arial", 1, 12));
+        g31.drawString("Víz:  "+viz + "", 607, 543);
+        g32.setColor(Color.BLACK);
+        g32.setFont(new Font("Arial", 1, 12));
+        g32.drawString("Konzerv kutyaeledel:  "+konzervkutyaeledel + "", 7, 563);
+        g33.setColor(Color.BLACK);
+        g33.setFont(new Font("Arial", 1, 12));
+        g33.drawString("Kutya energiaital:  "+kutyaenergiaital + "", 157, 563);
+        
     }
 }

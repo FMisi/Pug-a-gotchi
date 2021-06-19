@@ -19,7 +19,9 @@ public class Pugagotchi extends Canvas implements Runnable{
      */
     public Pugagotchi() {
         addKeyListener(new Keys());
-        new Tulajdonosneve();
+        if(Handler.seged==0){
+            new Tulajdonosneve();
+        }
     }
     
     /**

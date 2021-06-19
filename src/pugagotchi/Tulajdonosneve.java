@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Tulajdonosneve {
-    JFrame frame = new JFrame("Te meg ki a fasz vagy?");
+    JFrame frame = new JFrame("Mi a neved?");
     JPanel panel = new JPanel(new GridLayout(2,2));
     JTextField szovegMezo = new JTextField();
     JButton gomb = new JButton("OK");

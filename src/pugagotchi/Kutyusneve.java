@@ -18,6 +18,7 @@ public class Kutyusneve {
             label.setText(szovegMezo.getText());
             Handler.kutyusneve = szovegMezo.getText();
             frame.setVisible(false);
+            Handler.seged++;
             new Window(812, 606, "Pug-a-gotchi", new Pugagotchi());
             });
             panel.add(szovegMezo);

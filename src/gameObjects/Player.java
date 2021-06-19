@@ -22,11 +22,8 @@ public class Player extends JPanel{
     
     private final int nulla;
     
-    public Player(Color c, int x, int y){
+    public Player(){
         this.nulla = 0;
-        tile.first = x;
-        tile.second = y;
-        this.c = c;
         playerx = 250;
         playery = 120;
     }
