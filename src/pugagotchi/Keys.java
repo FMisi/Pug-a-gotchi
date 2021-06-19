@@ -14,6 +14,7 @@ public class Keys implements KeyListener{
     private boolean[] keyDown = {false, false, false, false, false, false, false, false, false};
     private static boolean ablakbool = false;
     private static boolean ablakbool2 = false;
+    private static boolean ablakbool3 = false;
     
     /**
      * A keyPressed eljaras a lenyomott billentyuk KeyCode-jat vizsgalja,<br>
@@ -34,6 +35,21 @@ public class Keys implements KeyListener{
         if(arg1.getKeyCode() == KeyEvent.VK_J){
             keyPressedJ();
         }
+        if(arg1.getKeyCode() == KeyEvent.VK_O){
+            keyPressedO();
+        }
+        if(arg1.getKeyCode() == KeyEvent.VK_K){
+            keyPressedK();
+        }
+        if(arg1.getKeyCode() == KeyEvent.VK_N){
+            keyPressedN();
+        }
+        if(arg1.getKeyCode() == KeyEvent.VK_A){
+            keyPressedA();
+        }
+        if(arg1.getKeyCode() == KeyEvent.VK_M){
+            keyPressedM();
+        }
     }
     
     // keyPressed void-ok KEZDETE
@@ -43,7 +59,7 @@ public class Keys implements KeyListener{
     }
     
     private void keyPressedE(){
-        if(ablakbool2==false){
+        if(ablakbool2==false && ablakbool3==false){
             if(ablakbool==true){
                 ablakbool=false;
             }
@@ -55,7 +71,7 @@ public class Keys implements KeyListener{
     }
     
     private void keyPressedJ(){
-        if(ablakbool==false){
+        if(ablakbool==false && ablakbool3==false){
             if(ablakbool2==true){
                 ablakbool2=false;
             }
@@ -64,6 +80,58 @@ public class Keys implements KeyListener{
             }
         }
         keyDown[2] = true;
+    }
+    
+    private void keyPressedO(){
+        if(ablakbool==false && ablakbool2==false){
+            if(ablakbool3==true){
+                ablakbool3=false;
+            }
+            else if(ablakbool3==false){
+                ablakbool3=true;
+            }
+        }
+        keyDown[3] = true;
+    }
+    
+    private void keyPressedK(){
+        if(ablakbool3==true && Handler.penz>=6 && Handler.egeszseg!=100){
+            Handler.penz-=6;
+            Handler.egeszseg+=24;
+        }
+        keyDown[4] = true;
+    }
+    
+    private void keyPressedN(){
+        if(ablakbool3==true && Handler.penz>=10 && Handler.egeszseg!=100){
+            Handler.penz-=10;
+            Handler.egeszseg+=40;
+        }
+        keyDown[5] = true;
+    }
+        
+    private void keyPressedA(){
+        if(ablakbool3==true && Handler.penz>=25 && Handler.egeszseg!=100){
+            Handler.penz-=25;
+            Handler.egeszseg=100;
+        }
+        keyDown[6] = true;
+    }
+    
+    private void keyPressedM(){
+        if(ablakbool3==true && Handler.penz>=100){
+            if(Handler.jollakottsag==100 && Handler.egeszseg==100 && Handler.kedv==100
+                    && Handler.energia==100 && Handler.rendetlenseg==100){}
+            else {
+                Handler.penz-=100;
+                Handler.jollakottsag=100;
+                Handler.egeszseg=100;
+                Handler.kedv=100;
+                Handler.energia=100;
+                Handler.rendetlenseg=100;
+            }
+        }
+        keyDown[7] = true;
     }
     // keyPressed void-ok VEGE
 
@@ -85,6 +153,21 @@ public class Keys implements KeyListener{
         if(arg1.getKeyCode() == KeyEvent.VK_J){
             keyDown[2] = false;
         }
+        if(arg1.getKeyCode() == KeyEvent.VK_O){
+            keyDown[3] = false;
+        }
+        if(arg1.getKeyCode() == KeyEvent.VK_K){
+            keyDown[4] = false;
+        }
+        if(arg1.getKeyCode() == KeyEvent.VK_N){
+            keyDown[5] = false;
+        }
+        if(arg1.getKeyCode() == KeyEvent.VK_A){
+            keyDown[6] = false;
+        }
+        if(arg1.getKeyCode() == KeyEvent.VK_M){
+            keyDown[7] = false;
+        }
     }
     
     /**
@@ -103,6 +186,10 @@ public class Keys implements KeyListener{
 
     public static boolean isAblakbool2() {
         return ablakbool2;
+    }
+    
+    public static boolean isAblakbool3() {
+        return ablakbool3;
     }
     
 }

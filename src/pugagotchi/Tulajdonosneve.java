@@ -16,6 +16,9 @@ public class Tulajdonosneve {
         }
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gomb.addActionListener(e -> {
+        if(szovegMezo.getText().length()>=15){
+            szovegMezo.setText(szovegMezo.getText().substring(0, 14));
+        }
         label.setText(szovegMezo.getText());
         Handler.tulnev = szovegMezo.getText();
         frame.setVisible(false);
@@ -25,7 +28,7 @@ public class Tulajdonosneve {
         panel.add(szovegMezo);
         panel.add(gomb);
         panel.add(label);
-        label.setBorder(BorderFactory.createEmptyBorder(25,115,25,15));
+        label.setBorder(BorderFactory.createEmptyBorder(25,135,25,15));
         frame.add(panel, BorderLayout.CENTER);
         frame.pack();
         frame.setLocationRelativeTo(null);

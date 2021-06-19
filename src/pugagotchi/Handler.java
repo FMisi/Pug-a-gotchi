@@ -29,7 +29,7 @@ public class Handler {
     public static int hazikoszt = 0;
     public static int viz = 0;
     public static int konzervkutyaeledel = 0;
-    public static int kutyaenergiaital = 40;
+    public static int kutyaenergiaital = 0;
     
     public static boolean winbool = false;
     
@@ -128,6 +128,10 @@ public class Handler {
         Graphics2D g32 = (Graphics2D)g;
         Graphics2D g33 = (Graphics2D)g;
         
+        Graphics2D g34 = (Graphics2D)g;
+        Graphics2D g35 = (Graphics2D)g;
+        Graphics2D g36 = (Graphics2D)g;
+        Graphics2D g37 = (Graphics2D)g;
         
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("Arial", 1, 12));
@@ -200,46 +204,63 @@ public class Handler {
         g26.setColor(Color.BLACK);
         g26.setFont(new Font("Arial", 1, 12));
         
-        if(Keys.isAblakbool()==true && Keys.isAblakbool2()==false){
-            g13.drawString("Jutalomfalatka", 287, 54);
-            g14.drawString("Száraz kutyatáp", 287, 124);
-            g15.drawString("Csont", 287, 194);
-            g16.drawString("Házikoszt", 287, 264);
-            g17.drawString("Víz", 287, 334);
-            g18.drawString("Konzerv kutyaeledel", 287, 404);
-            g19.drawString("Kutya energiaital", 287, 474);
+        if(Keys.isAblakbool()==true && Keys.isAblakbool2()==false && Keys.isAblakbool3()==false){
+            g13.drawString("Jutalomfalatka (4 pénz)", 287, 54);
+            g13.drawString("(Jóllakottság +10)", 287, 69);
+            g14.drawString("Száraz kutyatáp (8 pénz)", 287, 124);
+            g14.drawString("(Jóllakottság +20)", 287, 139);
+            g15.drawString("Csont (10 pénz)", 287, 194);
+            g15.drawString("(Jóllakottság +23)", 287, 209);
+            g16.drawString("Házikoszt (6 pénz)", 287, 264);
+            g16.drawString("(Jóllakottság +15)", 287, 279);
+            g17.drawString("Víz (3 pénz)", 287, 334);
+            g17.drawString("(Jóllakottság +7)", 287, 349);
+            g18.drawString("Konz. kutyaeledel (13 pénz)", 287, 404);
+            g18.drawString("(Jóllakottság +30)", 287, 419);
+            g19.drawString("Kutya energiaital (20 pénz)", 287, 474);
+            g19.drawString("(Jóllakottság +20, Ener. +15)", 287, 489);
         }
-        else if(Keys.isAblakbool()==false && Keys.isAblakbool2()==true){
+        else if(Keys.isAblakbool()==false && Keys.isAblakbool2()==true && Keys.isAblakbool3()==false){
             g20.drawString("Sétáltatás", 287, 54);
             g21.drawString("Labdás játék", 287, 124);
-            g22.drawString("Kutyaiskola", 287, 194);
+            g22.drawString("Kutyaiskola (10 pénz)", 287, 194);
             g23.drawString("Játék a parkban", 287, 264);
             g24.drawString("Újságkihordás", 287, 334);
             g25.drawString("Rendőri segítség", 287, 404);
             g26.drawString("Házőrzés", 287, 474);
         }
-        
-        g27.setColor(Color.BLACK);
-        g27.setFont(new Font("Arial", 1, 12));
-        g27.drawString("Jutalomfalatka:  "+jutalomfalatka + "", 7, 543);
-        g28.setColor(Color.BLACK);
-        g28.setFont(new Font("Arial", 1, 12));
-        g28.drawString("Száraz kutyatáp:  "+szarazkutyatap + "", 157, 543);
-        g29.setColor(Color.BLACK);
-        g29.setFont(new Font("Arial", 1, 12));
-        g29.drawString("Csont:  "+csont + "", 307, 543);
-        g30.setColor(Color.BLACK);
-        g30.setFont(new Font("Arial", 1, 12));
-        g30.drawString("Házikoszt:  "+hazikoszt + "", 457, 543);
+        else if(Keys.isAblakbool()==false && Keys.isAblakbool2()==false && Keys.isAblakbool3()==true){
+            g27.drawString("Kis életcsomag", 287, 54);
+            g27.drawString("(6 pénz)", 287, 69);
+            g28.drawString("Nagy életcsomag", 287, 124);
+            g28.drawString("(10 pénz)", 287, 139);
+            g29.drawString("Állatorvos", 287, 194);
+            g29.drawString("(25 pénz)", 287, 209);
+            g30.drawString("Maximalizáló ital", 287, 264);
+            g30.drawString("(100 pénz)", 287, 279);
+        }
+
         g31.setColor(Color.BLACK);
         g31.setFont(new Font("Arial", 1, 12));
-        g31.drawString("Víz:  "+viz + "", 607, 543);
+        g31.drawString("Jutalomfalatka:  "+jutalomfalatka + "", 7, 543);
         g32.setColor(Color.BLACK);
         g32.setFont(new Font("Arial", 1, 12));
-        g32.drawString("Konzerv kutyaeledel:  "+konzervkutyaeledel + "", 7, 563);
+        g32.drawString("Száraz kutyatáp:  "+szarazkutyatap + "", 157, 543);
         g33.setColor(Color.BLACK);
         g33.setFont(new Font("Arial", 1, 12));
-        g33.drawString("Kutya energiaital:  "+kutyaenergiaital + "", 157, 563);
-        
+        g33.drawString("Csont:  "+csont + "", 307, 543);
+        g34.setColor(Color.BLACK);
+        g34.setFont(new Font("Arial", 1, 12));
+        g34.drawString("Házikoszt:  "+hazikoszt + "", 457, 543);
+        g35.setColor(Color.BLACK);
+        g35.setFont(new Font("Arial", 1, 12));
+        g35.drawString("Víz:  "+viz + "", 607, 543);
+        g36.setColor(Color.BLACK);
+        g36.setFont(new Font("Arial", 1, 12));
+        g36.drawString("Konzerv kutyaeledel:  "+konzervkutyaeledel + "", 7, 563);
+        g37.setColor(Color.BLACK);
+        g37.setFont(new Font("Arial", 1, 12));
+        g37.drawString("Kutya energiaital:  "+kutyaenergiaital + "", 157, 563);
+
     }
 }
