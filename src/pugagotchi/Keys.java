@@ -1,6 +1,7 @@
 package pugagotchi;
 
 import java.awt.event.*;
+import java.util.Random;
 
 /**
  * A Keys osztaly a felhasznaloi input-ot valositja meg<br>
@@ -68,6 +69,12 @@ public class Keys implements KeyListener{
             case KeyEvent.VK_U:
                 keyPressedU();
                 break;
+            case KeyEvent.VK_L:
+                keyPressedL();
+                break;
+            case KeyEvent.VK_R:
+                keyPressedR();
+                break;
         }
     }
     
@@ -98,7 +105,7 @@ public class Keys implements KeyListener{
                 ablakbool2=true;
             }
         }
-        if(ablakbool==true && Handler.penz>=4){
+        else if(ablakbool==true && Handler.penz>=4){
             Handler.penz-=4;
             Handler.jutalomfalatka++;
         }
@@ -122,9 +129,15 @@ public class Keys implements KeyListener{
             Handler.penz-=6;
             Handler.egeszseg+=24;
         }
-        if(ablakbool==true && Handler.penz>=13){
+        else if(ablakbool==true && Handler.penz>=13){
             Handler.penz-=13;
             Handler.konzervkutyaeledel++;
+        }
+        else if(ablakbool2==true && Handler.penz>=10 && Handler.energia>=10){
+            Handler.penz-=10;
+            Handler.energia-=20;
+            Handler.egeszseg-=5;
+            Handler.rendetlenseg-=50;
         }
         keyDown[4] = true;
     }
@@ -141,6 +154,11 @@ public class Keys implements KeyListener{
         if(ablakbool3==true && Handler.penz>=25 && Handler.egeszseg!=100){
             Handler.penz-=25;
             Handler.egeszseg=100;
+        }
+        else if(ablakbool2==true && Handler.energia>=10){
+            Handler.energia-=10;
+            Handler.egeszseg-=10;
+            Handler.rendetlenseg-=10;
         }
         keyDown[6] = true;
     }
@@ -166,6 +184,10 @@ public class Keys implements KeyListener{
             Handler.penz-=8;
             Handler.szarazkutyatap++;
         }
+        else if(ablakbool2==true && Handler.energia>=10){
+            Handler.energia-=10;
+            Handler.egeszseg-=4;
+        }
         keyDown[8] = true;
     }
     
@@ -181,6 +203,18 @@ public class Keys implements KeyListener{
         if(ablakbool==true && Handler.penz>=6){
             Handler.penz-=6;
             Handler.hazikoszt++;
+        }
+        else if(ablakbool2==true && Handler.rendetlenseg<40 && Handler.energia>=10){
+            Random random1 = new Random();
+            Random random2 = new Random();
+            Random random3 = new Random();
+            int randint1 = random1.nextInt(171) + 30; //random1.nextInt(85) + 15; [15-99]
+            int randint2 = random2.nextInt(23) + 8;
+            int randint3 = random3.nextInt(11) + 10;
+            Handler.penz+=randint1;
+            Handler.energia-=randint2;
+            Handler.egeszseg-=randint3;
+            
         }
         keyDown[10] = true;
     }
@@ -198,8 +232,54 @@ public class Keys implements KeyListener{
             Handler.penz-=20;
             Handler.kutyaenergiaital++;
         }
+        else if(ablakbool2==true && Handler.rendetlenseg<40 && Handler.energia>=10){
+            Handler.penz+=50;
+            Handler.energia-=10;
+            Handler.egeszseg-=4;
+        }
         keyDown[12] = true;
     }
+    
+    private void keyPressedL(){
+        if(ablakbool2==true && Handler.energia>=10){
+            Random random = new Random();
+            int randint = random.nextInt(10);
+            Handler.energia-=18;
+            Handler.egeszseg-=randint;
+            Handler.rendetlenseg-=5;
+            
+        }
+        else if(ablakbool==false && ablakbool2==false && ablakbool3==false
+                && Handler.jollakottsag>=8 && Handler.egeszseg>=5){
+            Handler.korok++;
+            Random random = new Random();
+            int randint = random.nextInt(21)+30;
+            Handler.energia+=randint;
+            Handler.jollakottsag-=8;
+            Handler.egeszseg-=5;
+        }
+        keyDown[13] = true;
+    }
+    
+    private void keyPressedR(){
+        if(ablakbool2==true && Handler.rendetlenseg<40){
+            Random random = new Random();
+            int randint = random.nextInt(16);
+            Handler.penz+=100;
+            Handler.energia-=25;
+            Handler.egeszseg-=randint;
+            
+        }
+        keyDown[14] = true;
+    }
+    
+    private void keyPressedF(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false){
+            
+        }
+        keyDown[15] = true;
+    }
+    
     // keyPressed void-ok VEGE
 
     /**
@@ -250,6 +330,15 @@ public class Keys implements KeyListener{
                 break;
             case KeyEvent.VK_U:
                 keyDown[12] = false;
+                break;
+            case KeyEvent.VK_L:
+                keyDown[13] = false;
+                break;
+            case KeyEvent.VK_R:
+                keyDown[14] = false;
+                break;
+            case KeyEvent.VK_F:
+                keyDown[15] = false;
                 break;
         }
     }

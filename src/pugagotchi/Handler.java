@@ -226,8 +226,11 @@ public class Handler {
             g22.drawString("Kutyaiskola (10 pénz)", 287, 194);
             g23.drawString("Játék a parkban", 287, 264);
             g24.drawString("Újságkihordás", 287, 334);
+            g24.drawString("(40% rendetlenség alatt)", 287, 349);
             g25.drawString("Rendőri segítség", 287, 404);
+            g25.drawString("(40% rendetlenség alatt)", 287, 419);
             g26.drawString("Házőrzés", 287, 474);
+            g26.drawString("(40% rendetlenség alatt)", 287, 489);
         }
         else if(Keys.isAblakbool()==false && Keys.isAblakbool2()==false && Keys.isAblakbool3()==true){
             g27.drawString("Kis életcsomag", 287, 54);
