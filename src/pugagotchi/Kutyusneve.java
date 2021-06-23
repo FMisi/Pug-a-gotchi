@@ -10,7 +10,7 @@ public class Kutyusneve {
         JButton gomb = new JButton("OK");
         JLabel label = new JLabel("");
         public Kutyusneve() {
-            if(!Handler.kutyusneve.equals("Kutyus neve")){
+            if(!Kezelo.kutyusneve.equals("Kutyus neve")){
                 frame.setVisible(false);
             }
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,10 +19,10 @@ public class Kutyusneve {
                 szovegMezo.setText(szovegMezo.getText().substring(0, 14));
             }
             label.setText(szovegMezo.getText());
-            Handler.kutyusneve = szovegMezo.getText();
+            Kezelo.kutyusneve = szovegMezo.getText();
             frame.setVisible(false);
-            Handler.seged++;
-            new Window(812, 606, "Pug-a-gotchi", new Pugagotchi());
+            Kezelo.seged++;
+            new Ablak(812, 606, "Pug-a-gotchi", new Pugagotchi());
             });
             panel.add(szovegMezo);
             panel.add(gomb);

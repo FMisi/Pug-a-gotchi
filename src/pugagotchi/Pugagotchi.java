@@ -18,8 +18,8 @@ public class Pugagotchi extends Canvas implements Runnable{
      * Egy ablak peldanyositasa, billentyuzet hallgato hozzadasa
      */
     public Pugagotchi() {
-        addKeyListener(new Keys());
-        if(Handler.seged==0){
+        addKeyListener(new Iranyitas());
+        if(Kezelo.seged==0){
             new Tulajdonosneve();
         }
     }
@@ -102,7 +102,7 @@ public class Pugagotchi extends Canvas implements Runnable{
         g.setColor(new Color(0,102,173));
         g.fillRect(0, 0, 812, 606);
 
-        Handler.render(g);
+        Kezelo.render(g);
 
         g.dispose();
         g2.dispose();
@@ -114,7 +114,7 @@ public class Pugagotchi extends Canvas implements Runnable{
      * A tick eljarassal utasitasokat hajthatunk vegre notoriusan
      */
     private void tick(){
-        Handler.tick();
+        Kezelo.tick();
     }
     
 }

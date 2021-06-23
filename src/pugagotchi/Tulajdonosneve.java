@@ -11,7 +11,7 @@ public class Tulajdonosneve {
     JLabel label = new JLabel("");
     
     public Tulajdonosneve() {
-        if(!Handler.tulnev.equals("Tulnev")){
+        if(!Kezelo.tulnev.equals("Tulnev")){
             frame.setVisible(false);
         }
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,7 +20,7 @@ public class Tulajdonosneve {
             szovegMezo.setText(szovegMezo.getText().substring(0, 14));
         }
         label.setText(szovegMezo.getText());
-        Handler.tulnev = szovegMezo.getText();
+        Kezelo.tulnev = szovegMezo.getText();
         frame.setVisible(false);
         new Kutyusneve();
         });
