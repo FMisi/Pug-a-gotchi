@@ -14,7 +14,7 @@ public class Iranyitas implements KeyListener{
     
     private boolean[] keyDown = {false, false, false, false, false, false, false,
         false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false};
+        false, false, false, false, false, false, false};
     private static boolean ablakbool = false;
     private static boolean ablakbool2 = false;
     private static boolean ablakbool3 = false;
@@ -23,6 +23,25 @@ public class Iranyitas implements KeyListener{
     Random rand = new Random();
     private int randomint = 0;
     
+    private int v1;
+    private int v2;
+    private int v3;
+    private int v4;
+    private int v5;
+    private int v6;
+    private int v7;
+    private int v8;
+    private int v9;
+    private int v10;
+    private int v11;
+    private int v12;
+    private int v13;
+    private int v14;
+    private int v15;
+    private int v16;
+    private int v17;
+    private int v18;
+
     /**
      * A keyPressed eljaras a lenyomott billentyuk KeyCode-jat vizsgalja,<br>
      * es az alapjan hivja meg az adott KeyPressed eljarast<br>
@@ -33,6 +52,8 @@ public class Iranyitas implements KeyListener{
      */
     @Override
     public void keyPressed(KeyEvent arg1) {
+        //<editor-fold defaultstate="collapsed" desc="keyPressed() hivasok">
+        if(Kezelo.winbool==false){
         switch(arg1.getKeyCode()){
             case KeyEvent.VK_T:
                 keyPressedT();
@@ -82,10 +103,65 @@ public class Iranyitas implements KeyListener{
             case KeyEvent.VK_F:
                 keyPressedF();
                 break;
+            // 1
+            case KeyEvent.VK_1:
+                keyPressed1();
+                break;
+            case KeyEvent.VK_NUMPAD1:
+                keyPressed1();
+                break;
+            // 2
+            case KeyEvent.VK_2:
+                keyPressed2();
+                break;
+            case KeyEvent.VK_NUMPAD2:
+                keyPressed2();
+                break;
+            // 3
+            case KeyEvent.VK_3:
+                keyPressed3();
+                break;
+            case KeyEvent.VK_NUMPAD3:
+                keyPressed3();
+                break;
+            // 4
+            case KeyEvent.VK_4:
+                keyPressed4();
+                break;
+            case KeyEvent.VK_NUMPAD4:
+                keyPressed4();
+                break;
+            // 5
+            case KeyEvent.VK_5:
+                keyPressed5();
+                break;
+            case KeyEvent.VK_NUMPAD5:
+                keyPressed5();
+                break;
+            // 6
+            case KeyEvent.VK_6:
+                keyPressed6();
+                break;
+            case KeyEvent.VK_NUMPAD6:
+                keyPressed6();
+                break;
+            // 7
+            case KeyEvent.VK_7:
+                keyPressed7();
+                break;
+            case KeyEvent.VK_NUMPAD7:
+                keyPressed7();
+                break;
+            // B
+            case KeyEvent.VK_B:
+                keyPressedB();
+                break;
         }
+        }
+        //</editor-fold>
     }
     
-    // keyPressed void-ok KEZDETE
+    //<editor-fold defaultstate="collapsed" desc="keyPressed() void-ok">
     private void keyPressedT(){
         Kezelo.penz+=1000;
         keyDown[0] = true;
@@ -140,11 +216,13 @@ public class Iranyitas implements KeyListener{
             Kezelo.penz-=13;
             Kezelo.konzervkutyaeledel++;
         }
-        else if(ablakbool2==true && Kezelo.penz>=10 && Kezelo.energia>=10){
+        else if(ablakbool2==true && Kezelo.penz>=10 && Kezelo.energia>=20
+                && Kezelo.egeszseg >=5){ // rendetlensegre nem szabok feltetelt
             Kezelo.penz-=10;
             Kezelo.energia-=20;
             Kezelo.egeszseg-=5;
             Kezelo.rendetlenseg-=50;
+            Kezelo.kedv+=20;
         }
         keyDown[4] = true;
     }
@@ -162,10 +240,12 @@ public class Iranyitas implements KeyListener{
             Kezelo.penz-=25;
             Kezelo.egeszseg=100;
         }
-        else if(ablakbool2==true && Kezelo.energia>=10){
+        else if(ablakbool2==true && Kezelo.energia>=10 && Kezelo.egeszseg>=10){
+            // rendetlensegre nem szabok feltetelt
             Kezelo.energia-=10;
             Kezelo.egeszseg-=10;
             Kezelo.rendetlenseg-=10;
+            Kezelo.kedv+=10;
         }
         keyDown[6] = true;
     }
@@ -183,6 +263,9 @@ public class Iranyitas implements KeyListener{
                 Kezelo.rendetlenseg=100;
             }
         }
+        else if(ablakbool==false && ablakbool2==false && ablakbool3==false){
+            v1 = Kezelo.jollakottsag;
+        }
         keyDown[7] = true;
     }
     
@@ -191,9 +274,10 @@ public class Iranyitas implements KeyListener{
             Kezelo.penz-=8;
             Kezelo.szarazkutyatap++;
         }
-        else if(ablakbool2==true && Kezelo.energia>=10){
+        else if(ablakbool2==true && Kezelo.energia>=10 && Kezelo.egeszseg>=4){
             Kezelo.energia-=10;
             Kezelo.egeszseg-=4;
+            Kezelo.kedv+=10;
         }
         keyDown[8] = true;
     }
@@ -221,7 +305,7 @@ public class Iranyitas implements KeyListener{
             Kezelo.penz+=randint1;
             Kezelo.energia-=randint2;
             Kezelo.egeszseg-=randint3;
-            
+            Kezelo.kedv-=randint2;
         }
         keyDown[10] = true;
     }
@@ -243,27 +327,28 @@ public class Iranyitas implements KeyListener{
             Kezelo.penz+=50;
             Kezelo.energia-=10;
             Kezelo.egeszseg-=4;
+            Kezelo.kedv-=10;
         }
         keyDown[12] = true;
     }
     
     private void keyPressedL(){
-        if(ablakbool2==true && Kezelo.energia>=10){
-            Random random = new Random();
-            int randint = random.nextInt(10);
+        Random random = new Random();
+        int randint = random.nextInt(10);
+        if(ablakbool2==true && Kezelo.energia>=10 && Kezelo.egeszseg >=randint){
             Kezelo.energia-=18;
             Kezelo.egeszseg-=randint;
+            Kezelo.kedv+=18;
         }
         else if(ablakbool==false && ablakbool2==false && ablakbool3==false
-                && Kezelo.jollakottsag>=8 && Kezelo.egeszseg>=5){
+                && Kezelo.jollakottsag>=8 && Kezelo.egeszseg>=5 && koszosbool==false){
             Kezelo.korok++;
-            Random random = new Random();
-            int randint = random.nextInt(21)+30;
-            Kezelo.energia+=randint;
+            Random random2 = new Random();
+            int randint2 = random2.nextInt(21)+30;
+            Kezelo.energia+=randint2;
             Kezelo.jollakottsag-=8;
             Kezelo.egeszseg-=5;
             randomint = rand.nextInt(100)+1;
-            System.out.println("randomint: "+randomint);
             if(randomint<=40){
                 koszosbool = true;
             }
@@ -272,13 +357,13 @@ public class Iranyitas implements KeyListener{
     }
     
     private void keyPressedR(){
-        if(ablakbool2==true && Kezelo.rendetlenseg<40){
-            Random random = new Random();
-            int randint = random.nextInt(16);
+        Random random = new Random();
+        int randint = random.nextInt(16);
+        if(ablakbool2==true && Kezelo.rendetlenseg<40 && Kezelo.energia>25 && Kezelo.egeszseg > randint){
             Kezelo.penz+=100;
             Kezelo.energia-=25;
             Kezelo.egeszseg-=randint;
-            
+            Kezelo.kedv-=25;
         }
         keyDown[14] = true;
     }
@@ -290,7 +375,83 @@ public class Iranyitas implements KeyListener{
         keyDown[15] = true;
     }
     
-    // keyPressed void-ok VEGE
+    private void keyPressed1(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false
+                && Kezelo.jutalomfalatka > 0 && Kezelo.jollakottsag < 100){
+            Kezelo.jutalomfalatka--;
+            Kezelo.energia-=3;
+            Kezelo.jollakottsag+=10;
+        }
+        keyDown[16] = true;
+    }
+    
+    private void keyPressed2(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false
+                && Kezelo.szarazkutyatap > 0 && Kezelo.jollakottsag < 100){
+            Kezelo.szarazkutyatap--;
+            Kezelo.energia-=3;
+            Kezelo.jollakottsag+=20;
+        }
+        keyDown[17] = true;
+    }
+    
+    private void keyPressed3(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false
+                && Kezelo.csont > 0  && Kezelo.jollakottsag < 100){
+            Kezelo.csont--;
+            Kezelo.energia-=3;
+            Kezelo.jollakottsag+=23;
+        }
+        keyDown[18] = true;
+    }
+    
+    private void keyPressed4(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false
+                && Kezelo.hazikoszt > 0  && Kezelo.jollakottsag < 100){
+            Kezelo.hazikoszt--;
+            Kezelo.energia-=3;
+            Kezelo.jollakottsag+=15;
+        }
+        keyDown[19] = true;
+    }
+    
+    private void keyPressed5(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false
+                && Kezelo.viz > 0  && Kezelo.jollakottsag < 100){
+            Kezelo.viz--;
+            Kezelo.energia-=3;
+            Kezelo.jollakottsag+=7;
+        }
+        keyDown[20] = true;
+    }
+    
+    private void keyPressed6(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false
+                && Kezelo.konzervkutyaeledel > 0  && Kezelo.jollakottsag < 100){
+            Kezelo.konzervkutyaeledel--;
+            Kezelo.energia-=3;
+            Kezelo.jollakottsag+=30;
+        }
+        keyDown[21] = true;
+    }
+    
+    private void keyPressed7(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false
+                && Kezelo.kutyaenergiaital > 0  && ((Kezelo.jollakottsag < 100) || (Kezelo.energia < 100))){
+            Kezelo.kutyaenergiaital--;
+            Kezelo.jollakottsag+=20;
+            Kezelo.energia+=12; // 15 - 3 = 12
+        }
+        keyDown[22] = true;
+    }
+    
+    private void keyPressedB(){
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false && v1 != 0){
+            Kezelo.jollakottsag = v1;
+        }
+        keyDown[23] = true;
+    }
+    //</editor-fold>
 
     /**
      * A keyReleased eljaras a felengedett billentyuk KeyCode-jat vizsgalja,<br>
@@ -301,6 +462,7 @@ public class Iranyitas implements KeyListener{
      */
     @Override
     public void keyReleased(KeyEvent arg1) {
+        //<editor-fold defaultstate="collapsed" desc="keyReleased() cuccok">
         switch(arg1.getKeyCode()){
             case KeyEvent.VK_T:
                 keyDown[0] = false;
@@ -350,7 +512,61 @@ public class Iranyitas implements KeyListener{
             case KeyEvent.VK_F:
                 keyDown[15] = false;
                 break;
+            // 1
+            case KeyEvent.VK_1:
+                keyDown[16] = false;
+                break;
+            case KeyEvent.VK_NUMPAD1:
+                keyDown[16] = false;
+                break;
+            // 2
+            case KeyEvent.VK_2:
+                keyDown[17] = false;
+                break;
+            case KeyEvent.VK_NUMPAD2:
+                keyDown[17] = false;
+                break;
+            // 3
+            case KeyEvent.VK_3:
+                keyDown[18] = false;
+                break;
+            case KeyEvent.VK_NUMPAD3:
+                keyDown[18] = false;
+                break;
+            // 4
+            case KeyEvent.VK_4:
+                keyDown[19] = false;
+                break;
+            case KeyEvent.VK_NUMPAD4:
+                keyDown[19] = false;
+                break;
+            // 5
+            case KeyEvent.VK_5:
+                keyDown[20] = false;
+                break;
+            case KeyEvent.VK_NUMPAD5:
+                keyDown[20] = false;
+                break;
+            // 6
+            case KeyEvent.VK_6:
+                keyDown[21] = false;
+                break;
+            case KeyEvent.VK_NUMPAD6:
+                keyDown[21] = false;
+                break;
+            // 7
+            case KeyEvent.VK_7:
+                keyDown[22] = false;
+                break;
+            case KeyEvent.VK_NUMPAD7:
+                keyDown[22] = false;
+                break;
+            // B
+            case KeyEvent.VK_B:
+                keyDown[23] = false;
+                break;
         }
+        //</editor-fold>
     }
     
     /**
@@ -361,8 +577,7 @@ public class Iranyitas implements KeyListener{
     @Override
     public void keyTyped(KeyEvent arg1) {}
     
-    // Getterek
-
+    //<editor-fold defaultstate="collapsed" desc="Getterek">
     public static boolean isAblakbool() {
         return ablakbool;
     }
@@ -378,5 +593,5 @@ public class Iranyitas implements KeyListener{
     public static boolean isKoszosbool() {
         return koszosbool;
     }
-    
+    //</editor-fold>
 }

@@ -234,13 +234,13 @@ public class Kezelo {
         }
         else if(Iranyitas.isAblakbool()==false && Iranyitas.isAblakbool2()==false && Iranyitas.isAblakbool3()==true){
             g27.drawString("Kis életcsomag", 287, 54);
-            g27.drawString("(6 pénz)", 287, 69);
+            g27.drawString("(6 pénz) (Egészség +24%)", 287, 69);
             g28.drawString("Nagy életcsomag", 287, 124);
-            g28.drawString("(10 pénz)", 287, 139);
+            g28.drawString("(10 pénz) (Egészség +40%)", 287, 139);
             g29.drawString("Állatorvos", 287, 194);
-            g29.drawString("(25 pénz)", 287, 209);
+            g29.drawString("(25 pénz) (Egészség 100%)", 287, 209);
             g30.drawString("Maximalizáló ital", 287, 264);
-            g30.drawString("(100 pénz)", 287, 279);
+            g30.drawString("(100 pénz) (Minden 100%)", 287, 279);
         }
 
         g31.setColor(Color.BLACK);
