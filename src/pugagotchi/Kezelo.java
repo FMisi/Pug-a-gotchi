@@ -11,7 +11,7 @@ public class Kezelo {
     public static Jatekos playerOne = new Jatekos();
     
     // szamlalok
-    public static int korok = 90;
+    public static int korok = 0;
     public static int penz = 1500;
     public static int jollakottsag = 62;
     public static int egeszseg = 62;

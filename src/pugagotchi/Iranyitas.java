@@ -1,6 +1,7 @@
 package pugagotchi;
 
 import java.awt.event.*;
+import java.io.*;
 import java.util.Random;
 
 /**
@@ -23,13 +24,14 @@ public class Iranyitas implements KeyListener{
     Random rand = new Random();
     private int randomint = 0;
     
+    //<editor-fold defaultstate="collapsed" desc="valtozok mentes/betolteshez">
     private int v1;
     private int v2;
     private int v3;
     private int v4;
     private int v5;
-    private int v6;
-    private int v7;
+    private String v6;
+    private String v7;
     private int v8;
     private int v9;
     private int v10;
@@ -40,7 +42,8 @@ public class Iranyitas implements KeyListener{
     private int v15;
     private int v16;
     private int v17;
-    private int v18;
+    private boolean v18;
+    //</editor-fold>
 
     /**
      * A keyPressed eljaras a lenyomott billentyuk KeyCode-jat vizsgalja,<br>
@@ -55,9 +58,6 @@ public class Iranyitas implements KeyListener{
         //<editor-fold defaultstate="collapsed" desc="keyPressed() hivasok">
         if(Kezelo.winbool==false){
         switch(arg1.getKeyCode()){
-            case KeyEvent.VK_T:
-                keyPressedT();
-                break;
             case KeyEvent.VK_E:
                 keyPressedE();
                 break;
@@ -163,7 +163,6 @@ public class Iranyitas implements KeyListener{
     
     //<editor-fold defaultstate="collapsed" desc="keyPressed() void-ok">
     private void keyPressedT(){
-        Kezelo.penz+=1000;
         keyDown[0] = true;
     }
     
@@ -264,7 +263,7 @@ public class Iranyitas implements KeyListener{
             }
         }
         else if(ablakbool==false && ablakbool2==false && ablakbool3==false){
-            v1 = Kezelo.jollakottsag;
+            mentes();
         }
         keyDown[7] = true;
     }
@@ -446,13 +445,171 @@ public class Iranyitas implements KeyListener{
     }
     
     private void keyPressedB(){
-        if(ablakbool==false && ablakbool2==false && ablakbool3==false && v1 != 0){
-            Kezelo.jollakottsag = v1;
+        if(ablakbool==false && ablakbool2==false && ablakbool3==false){
+            betoltes();
         }
         keyDown[23] = true;
     }
     //</editor-fold>
-
+    
+    //<editor-fold defaultstate="collapsed" desc="mentes, betoltes">
+    private void mentes(){
+        v1 = Kezelo.jollakottsag;
+        v2 = Kezelo.egeszseg;
+        v3 = Kezelo.kedv;
+        v4 = Kezelo.energia;
+        v5 = Kezelo.rendetlenseg;
+        v6 = Kezelo.kutyusneve;
+        v7 = Kezelo.tulnev;
+        v8 = Kezelo.penz;
+        v9 = Kezelo.korok;
+        v10 = Kezelo.jutalomfalatka;
+        v11 = Kezelo.szarazkutyatap;
+        v12 = Kezelo.csont;
+        v13 = Kezelo.hazikoszt;
+        v14 = Kezelo.viz;
+        v15 = Kezelo.konzervkutyaeledel;
+        v16 = Kezelo.kutyaenergiaital;
+        v17 = Kezelo.seged;
+        v18 = koszosbool;
+        // Fajl letrehoz
+        File f1 = new File("save1.fun");
+        // Fajl iras
+        try{
+            PrintWriter pw = 
+            // Irando adat formazasa
+            new PrintWriter(
+            // Adat mentese az irasig (egyszerre iratunk,
+            // nem a kulon reszeket iratjuk ki egyesevel)
+            new BufferedWriter(
+            // Karaktereket ir a fajlba
+            // Hozzafuzes (append): new FileWriter(f2, true);
+            new FileWriter(f1)));
+            // Szoveget ir a fajlba.
+            pw.println(v1);
+            pw.println(v2);
+            pw.println(v3);
+            pw.println(v4);
+            pw.println(v5);
+            pw.println(v6);
+            pw.println(v7);
+            pw.println(v8);
+            pw.println(v9);
+            pw.println(v10);
+            pw.println(v11);
+            pw.println(v12);
+            pw.println(v13);
+            pw.println(v14);
+            pw.println(v15);
+            pw.println(v16);
+            pw.println(v17);
+            pw.println(v18);
+            // Fajlt bezar
+            pw.close();
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+    }
+    
+    private void readLines(File f) throws IOException{
+        FileReader fr = new FileReader(f);
+        BufferedReader br = new BufferedReader(fr);
+        String sor;
+        int sorokSzama = 0;
+        while(((sor = br.readLine()) != null)){
+            //<editor-fold defaultstate="collapsed" desc="sorokSzama kapcsolo">
+            switch(sorokSzama){
+                case 0:
+                    v1 = Integer.parseInt(sor);
+                    break;
+                case 1:
+                    v2 = Integer.parseInt(sor);
+                    break;
+                case 2:
+                    v3 = Integer.parseInt(sor);
+                    break;
+                case 3:
+                    v4 = Integer.parseInt(sor);
+                    break;
+                case 4:
+                    v5 = Integer.parseInt(sor);
+                    break;
+                case 5:
+                    v6 = sor;
+                    break;
+                case 6:
+                    v7 = sor;
+                    break;
+                case 7:
+                    v8 = Integer.parseInt(sor);
+                    break;
+                case 8:
+                    v9 = Integer.parseInt(sor);
+                    break;
+                case 9:
+                    v10 = Integer.parseInt(sor);
+                    break;
+                case 10:
+                    v11 = Integer.parseInt(sor);
+                    break;
+                case 11:
+                    v12 = Integer.parseInt(sor);
+                    break;
+                case 12:
+                    v13 = Integer.parseInt(sor);
+                    break;
+                case 13:
+                    v14 = Integer.parseInt(sor);
+                    break;
+                case 14:
+                    v15 = Integer.parseInt(sor);
+                    break;
+                case 15:
+                    v16 = Integer.parseInt(sor);
+                    break;
+                case 16:
+                    v17 = Integer.parseInt(sor);
+                    break;
+                case 17:
+                    v18 = Boolean.parseBoolean(sor);
+                    break;
+            }
+            sorokSzama++;
+            //</editor-fold>
+        }
+        br.close();
+        fr.close();
+    }
+    
+    private void betoltes(){
+        File f1 = new File("save1.fun");
+        try{
+            readLines(f1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        Kezelo.jollakottsag = v1;
+        Kezelo.egeszseg = v2;
+        Kezelo.kedv = v3;
+        Kezelo.energia = v4;
+        Kezelo.rendetlenseg = v5;
+        Kezelo.kutyusneve = v6;
+        Kezelo.tulnev = v7;
+        Kezelo.penz = v8;
+        Kezelo.korok = v9;
+        Kezelo.jutalomfalatka = v10;
+        Kezelo.szarazkutyatap = v11;
+        Kezelo.csont = v12;
+        Kezelo.hazikoszt = v13;
+        Kezelo.viz = v14;
+        Kezelo.konzervkutyaeledel = v15;
+        Kezelo.kutyaenergiaital = v16;
+        Kezelo.seged = v17;
+        koszosbool = v18;
+    }
+    //</editor-fold>
+    
     /**
      * A keyReleased eljaras a felengedett billentyuk KeyCode-jat vizsgalja,<br>
      * es az alapjan allitja a keyDown tomb adott indexu erteket vissza false-ra.<br>
